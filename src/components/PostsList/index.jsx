@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useGetAllPosts } from "../../hooks/useGetAllPosts";
 
 const PostsList = () => {
@@ -7,7 +8,7 @@ const PostsList = () => {
     <div>
       {posts.map((post) => (
         <li key={post._id}>
-          <h3>{post.title}</h3>
+          <Link to={`/post/${post._id}`}>{post.title}</Link>
         </li>
       ))}
     </div>
