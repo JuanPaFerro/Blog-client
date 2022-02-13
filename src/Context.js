@@ -11,13 +11,16 @@ export const Provider = ({ children }) => {
     isDarkMode,
     toggleDarkMode: () => setIsDarkMode((prevState) => !prevState),
     isAuth,
-    activateAuth: (token) => {
+    activateAuth: (data) => {
       setIsAuth(true);
-      window.sessionStorage.setItem("token", token);
+      window.sessionStorage.setItem("id", data._id);
+      window.sessionStorage.setItem("username", data.username);
+      window.sessionStorage.setItem("email", data.email);
+      window.sessionStorage.setItem("image", data.profilePic);
     },
     removeAuth: () => {
       setIsAuth(false);
-      window.sessionStorage.removeItem("token");
+      window.sessionStorage.clear();
     },
   };
 

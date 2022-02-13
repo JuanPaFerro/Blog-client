@@ -14,6 +14,7 @@ const Layout = () => {
       <Menu>
         <MenuItem to="/about">About Me</MenuItem>
         <MenuItem to="/portfolio">Portfolio</MenuItem>
+        <MenuItem to="/user">User</MenuItem>
         <ToggleDarkModeButton onClick={() => toggleDarkMode()}>
           {isDarkMode ? "Ligth" : "Dark"}
         </ToggleDarkModeButton>
