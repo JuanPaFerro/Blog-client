@@ -10,17 +10,26 @@ export const NavBar = styled.nav`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const NavBarDark = styled(NavBar)``;
+
+export const TextLogo = styled(Link)`
+  color: #222831;
+`;
+export const TextLogoDark = styled(TextLogo)`
+  color: #eeeeee;
+`;
+
 export const Menu = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 export const MenuItem = styled(Link)`
-  text-decoration: none;
-  background-color: #fff;
-  color: #000;
   margin-right: 10px;
+  text-decoration: none;
+  color: #000;
 `;
-export const ToggleDarkModeButton = styled.button`
-`
-
-
+export const MenuItemDark = styled(MenuItem)`
+  color: #eeeeee;
+`;

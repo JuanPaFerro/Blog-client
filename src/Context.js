@@ -1,15 +1,17 @@
 import React, { useState, createContext } from "react";
+import { useDarkMode } from "./hooks/useDarkMode";
 export const Context = createContext();
 
 export const Provider = ({ children }) => {
+  const [theme, themeToggler] = useDarkMode();
+
   const [isAuth, setIsAuth] = useState(() => {
     return window.sessionStorage.getItem("token");
   });
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const value = {
-    isDarkMode,
-    toggleDarkMode: () => setIsDarkMode((prevState) => !prevState),
+    theme,
+    themeToggler,
     isAuth,
     activateAuth: (data) => {
       setIsAuth(true);
