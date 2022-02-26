@@ -1,6 +1,26 @@
 import React from "react";
-import { HeroImg } from "./Hero";
+import {
+  HeroContainer,
+  HeroContent,
+  HeroTitle,
+  HeroText,
+  Arrow,
+  ArrowElement,
+} from "./Hero";
 
 export const Hero = () => {
-  return <HeroImg />;
+  return (
+    <HeroContainer>
+      <HeroContent>
+        <HeroText>Hello, my name is Juan Pablo Ferro and I am</HeroText>
+        <HeroTitle>SOFTWARE ENGINEER</HeroTitle>
+        <HeroText>creating amazing web applications</HeroText>
+      </HeroContent>
+      <Arrow to={"#about"}>
+        <ArrowElement />
+        <ArrowElement />
+        <ArrowElement />
+      </Arrow>
+    </HeroContainer>
+  );
 };

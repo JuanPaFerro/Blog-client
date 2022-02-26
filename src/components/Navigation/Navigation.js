@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const NavBar = styled.nav`
+  position: sticky;
+  top: 0;
   height: 50px;
   margin: 0px;
   padding: 0 20px;
