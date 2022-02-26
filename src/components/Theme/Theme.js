@@ -1,12 +1,20 @@
 export const lightTheme = {
-  body: "#FFF",
-  text: "#363537",
-  toggleBorder: "#FFF",
-  background: "#363537",
+  body: "#FBFBFE",
+  container: "#FFFFFF",
+  border: "#EFF3F5",
+  toggleBorder: "2A3B47",
+  clear: "#A0A7Ac",
+  content: "#697477",
+  title: "#2A3B47",
+  main: "#1083D6",
 };
 export const darkTheme = {
-  body: "#222831",
-  text: "#EEEEEE",
-  toggleBorder: "#6B8096",
-  background: "#999",
+  body: "#192229",
+  container: "#212E36",
+  border: "#2A3B47",
+  toggleBorder: "#EFF3F5",
+  clear: "#A0A7Ac",
+  content: "#C8CDD0",
+  title: "#EFF3F5",
+  main: "#52A5E0",
 };

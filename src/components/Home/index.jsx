@@ -1,12 +1,15 @@
 import React from "react";
-import PostsList from "../PostsList";
+import { Hero } from "../Hero/";
+import Layout from "../Layout";
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home</h1>
-      <PostsList />
-    </div>
+    <>
+      <Hero />
+      <Layout>
+        Home
+      </Layout>
+    </>
   );
 };
 

@@ -5,31 +5,35 @@ export const NavBar = styled.nav`
   height: 50px;
   margin: 0px;
   padding: 0 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const NavBarDark = styled(NavBar)``;
 
 export const TextLogo = styled(Link)`
-  color: #222831;
-`;
-export const TextLogoDark = styled(TextLogo)`
-  color: #eeeeee;
+  color: ${({theme})=> theme.title};
+  text-decoration: none;
 `;
 
 export const Menu = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 
 export const MenuItem = styled(Link)`
   margin-right: 10px;
+  padding: 10px 20px;
   text-decoration: none;
-  color: #000;
-`;
-export const MenuItemDark = styled(MenuItem)`
-  color: #eeeeee;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  color: ${({theme})=> theme.content};
+  transition: .5s;
+  &:hover{
+    border: 2px solid ${({ theme }) => theme.content};
+  }
 `;
