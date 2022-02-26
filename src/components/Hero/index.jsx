@@ -16,7 +16,7 @@ export const Hero = () => {
         <HeroTitle>SOFTWARE ENGINEER</HeroTitle>
         <HeroText>creating amazing web applications</HeroText>
       </HeroContent>
-      <Arrow to={"#about"}>
+      <Arrow href="#about">
         <ArrowElement />
         <ArrowElement />
         <ArrowElement />

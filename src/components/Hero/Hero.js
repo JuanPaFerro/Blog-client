@@ -1,6 +1,5 @@
 import styled, { keyframes } from "styled-components";
 import img from "../../assets/bg.jpg";
-import { Link } from "react-router-dom";
 
 export const HeroContainer = styled.div`
   height: 100vh;
@@ -53,7 +52,7 @@ const arrowAnimation = keyframes`
     }
 `;
 
-export const Arrow = styled(Link)`
+export const Arrow = styled.a`
   z-index: 10;
   position: absolute;
   bottom: 5%;

@@ -35,13 +35,9 @@ function App() {
             exact
             path="/blog"
             element={
-              isAuth ? (
-                <Layout>
-                  <Blog />
-                </Layout>
-              ) : (
-                <Navigate replace to="/auth" />
-              )
+              <Layout>
+                <Blog />
+              </Layout>
             }
           />
 
