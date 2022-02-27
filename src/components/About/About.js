@@ -18,7 +18,7 @@ export const AboutTitle = styled.h2`
   font-size: 30px;
   text-align: center;
 `;
-export const AboutImage = styled.img`
+export const Photo = styled.img`
   object-fit: cover;
   width: 150px;
   height: 150px;
@@ -38,7 +38,7 @@ export const ImageFooter = styled.h3`
   }
 `;
 
-export const AboutBioContainer = styled.div`
+export const BioContainer = styled.div`
   color: ${({ theme }) => theme.title};
   margin: 30px 30px 50px;
   display: flex;
@@ -48,8 +48,25 @@ export const AboutBioContainer = styled.div`
   text-align: justify;
   letter-spacing: 1px;
 `;
-export const AboutSkills = styled.div`
-    background: ${({theme})=> theme.clear};
-    width: 100vw;
-    height: 100vh;
-`
+export const SkillsSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: ${({ theme }) => theme.container};
+  width: 100vw;
+`;
+export const Quote = styled.p`
+  color: ${({ theme }) => theme.content};
+  line-height: 30px;
+  text-align: center;
+`;
+
+export const SkillCategory = styled.div`
+  display: grid;
+  grid-template-columns: 500px 500px;
+  margin-bottom: 30px;
+`;
+export const Skills = styled.div`
+  color: ${({ theme }) => theme.content};
+`;

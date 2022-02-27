@@ -14,6 +14,7 @@ export const NavBar = styled.nav`
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 `;
 
 export const TextLogo = styled(Link)`

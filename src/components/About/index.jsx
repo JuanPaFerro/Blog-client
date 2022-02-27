@@ -1,23 +1,51 @@
 import React from "react";
+import StarsRating from "../StarsRating";
 import {
   AboutContainer,
   AboutTitle,
-  AboutImage,
+  Photo,
   Separator,
   ImageFooter,
-  AboutBioContainer,
-  AboutSkills,
+  BioContainer,
+  SkillsSection,
+  Quote,
+  SkillCategory,
+  Skills,
 } from "./About";
 import Image from "../../assets/about.jpg";
 
 const About = () => {
+  const skills = {
+    "PROGRAMMING LANGUAGES": [
+      { name: "Javascript", level: 4 },
+      { name: "Python", level: 3 },
+      { name: "PHP", level: 3 },
+    ],
+    "WEB FRAMEWORKS": [
+      { name: "React", level: 4 },
+      { name: "Angular", level: 4 },
+      { name: "Node", level: 4 },
+      { name: "Express", level: 4 },
+      { name: "Tailwind", level: 2.5 },
+      { name: "Bootstrap", level: 3 },
+    ],
+    DATABASE: [
+      { name: "MongoDB", level: 4 },
+      { name: "MySQL", level: 3 },
+      { name: "PostgreSQL", level: 3 },
+      { name: "GraphQl", level: 2.5 },
+    ],
+    "UNIT TEST FRAMEWORKS": [{ name: "Jest", level: 3 }],
+    "CODE MANAGEMENT TOOLS": [{ name: "GIT", level: 3.5 }],
+  };
+
   return (
     <AboutContainer>
       <AboutTitle id="about">ABOUT ME</AboutTitle>
       <Separator />
-      <AboutImage src={Image} />
+      <Photo src={Image} />
       <ImageFooter>JUAN PABLO FERRO</ImageFooter>
-      <AboutBioContainer>
+      <BioContainer>
         <strong>Bio:</strong>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -44,11 +72,33 @@ const About = () => {
           faucibus nisl tincidunt. Vehicula ipsum a arcu cursus vitae congue
           mauris rhoncus aenean. Accumsan tortor posuere ac ut consequat semper.
         </p>
-      </AboutBioContainer>
-      <AboutSkills>
+      </BioContainer>
+      <SkillsSection>
         <AboutTitle>MY SKILLS</AboutTitle>
         <Separator />
-      </AboutSkills>
+        <Quote>
+          "We cannot solve our problems with the same thinking we used when we
+          created them."
+          <br />
+          -Albert Einstein
+        </Quote>
+
+        {Object.entries(skills).map((category) => (
+          <Skills>
+            <strong>{category[0]}</strong>
+            <SkillCategory>
+              {category[1].map((el) => (
+                <>
+                  <li>
+                    <span>{el.name}</span>
+                    <StarsRating stars={el.level} />
+                  </li>
+                </>
+              ))}
+            </SkillCategory>
+          </Skills>
+        ))}
+      </SkillsSection>
     </AboutContainer>
   );
 };
