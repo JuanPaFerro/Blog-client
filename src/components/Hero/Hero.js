@@ -9,7 +9,7 @@ export const HeroContainer = styled.div`
   &::before {
     content: "";
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     position: absolute;
     background-image: url(${img});
     filter: blur(4px);

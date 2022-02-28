@@ -11,6 +11,7 @@ import {
   Quote,
   SkillCategory,
   Skills,
+  SkillItem,
 } from "./About";
 import Image from "../../assets/about.jpg";
 
@@ -89,10 +90,10 @@ const About = () => {
             <SkillCategory>
               {category[1].map((el) => (
                 <>
-                  <li>
+                  <SkillItem>
                     <span>{el.name}</span>
                     <StarsRating stars={el.level} />
-                  </li>
+                  </SkillItem>
                 </>
               ))}
             </SkillCategory>

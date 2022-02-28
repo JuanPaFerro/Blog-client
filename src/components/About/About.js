@@ -4,7 +4,7 @@ export const Separator = styled.div`
   width: 100px;
   height: 1px;
   background: ${({ theme }) => theme.clear};
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
 `;
 export const AboutContainer = styled.div`
   display: flex;
@@ -49,12 +49,8 @@ export const BioContainer = styled.div`
   letter-spacing: 1px;
 `;
 export const SkillsSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   background: ${({ theme }) => theme.container};
-  width: 100vw;
+  width: 100%;
 `;
 export const Quote = styled.p`
   color: ${({ theme }) => theme.content};
@@ -63,10 +59,18 @@ export const Quote = styled.p`
 `;
 
 export const SkillCategory = styled.div`
-  display: grid;
-  grid-template-columns: 500px 500px;
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 30px;
 `;
 export const Skills = styled.div`
   color: ${({ theme }) => theme.content};
+  margin: 0 50px;
+`;
+export const SkillItem = styled.li`
+  width: 500px;
+  margin: 10px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
