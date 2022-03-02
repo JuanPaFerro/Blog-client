@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Separator = styled.div`
   width: 100px;
@@ -12,7 +13,7 @@ export const AboutContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-export const AboutTitle = styled.h2`
+export const Title = styled.h2`
   color: ${({ theme }) => theme.title};
   margin-bottom: 30px;
   font-size: 30px;
@@ -48,7 +49,7 @@ export const BioContainer = styled.div`
   text-align: justify;
   letter-spacing: 1px;
 `;
-export const SkillsSection = styled.div`
+export const DarkerSection = styled.div`
   background: ${({ theme }) => theme.container};
   width: 100%;
 `;
@@ -62,6 +63,8 @@ export const SkillCategory = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 30px;
+  justify-content: space-between;
+  border-bottom: 1px solid ${({ theme }) => theme.border};
 `;
 export const Skills = styled.div`
   color: ${({ theme }) => theme.content};
@@ -69,8 +72,32 @@ export const Skills = styled.div`
 `;
 export const SkillItem = styled.li`
   width: 500px;
-  margin: 10px 35px;
+  margin: 20px 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+export const SocialLinksContainer = styled.div`
+  width: 50%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+export const SocialLink = styled.a`
+  text-decoration: none;
+  color: ${({ theme }) => theme.content};
+  font-size: 40px;
+  text-align: center;
+  margin: 3rem 0;
+  transition: 0.2s ease-in-out;
+  span {
+    font-size: 20px;
+  }
+  &:hover {
+    color: ${({ theme }) => theme.main};
+  }
 `;

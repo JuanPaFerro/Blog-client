@@ -2,18 +2,22 @@ import React from "react";
 import StarsRating from "../StarsRating";
 import {
   AboutContainer,
-  AboutTitle,
+  Title,
   Photo,
   Separator,
   ImageFooter,
   BioContainer,
-  SkillsSection,
+  DarkerSection,
   Quote,
   SkillCategory,
   Skills,
   SkillItem,
+  SocialLinksContainer,
+  SocialLink,
 } from "./About";
+import ProjectCard from "../ProjectCard";
 import Image from "../../assets/about.jpg";
+import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
 
 const About = () => {
   const skills = {
@@ -42,7 +46,7 @@ const About = () => {
 
   return (
     <AboutContainer>
-      <AboutTitle id="about">ABOUT ME</AboutTitle>
+      <Title id="about">ABOUT ME</Title>
       <Separator />
       <Photo src={Image} />
       <ImageFooter>JUAN PABLO FERRO</ImageFooter>
@@ -74,8 +78,8 @@ const About = () => {
           mauris rhoncus aenean. Accumsan tortor posuere ac ut consequat semper.
         </p>
       </BioContainer>
-      <SkillsSection>
-        <AboutTitle>MY SKILLS</AboutTitle>
+      <DarkerSection>
+        <Title>MY SKILLS</Title>
         <Separator />
         <Quote>
           "We cannot solve our problems with the same thinking we used when we
@@ -83,7 +87,6 @@ const About = () => {
           <br />
           -Albert Einstein
         </Quote>
-
         {Object.entries(skills).map((category) => (
           <Skills>
             <strong>{category[0]}</strong>
@@ -99,7 +102,48 @@ const About = () => {
             </SkillCategory>
           </Skills>
         ))}
-      </SkillsSection>
+      </DarkerSection>
+      <Title>PROJECTS</Title>
+      <Separator />
+      <Quote>
+        Listed below are all the projects I was involved in during my working
+        period at each company with a brief description of the software.
+        <br />
+        All these projects are property of each company.
+      </Quote>
+      <ProjectCard />
+      <DarkerSection>
+        <Title>GET IN TOUCH</Title>
+        <Separator />
+        <Quote>
+          "Quality is more important than quantity. One home run is much better
+          than two doubles."
+          <br />
+          -Steve Jobs
+        </Quote>
+        <SocialLinksContainer>
+          <SocialLink >
+            <BsPhone />
+            <br />
+            <span>+53 54605861</span>
+          </SocialLink>
+          <SocialLink >
+            <BsEnvelope />
+            <br />
+            <span>juanpabloferroarroyo</span>
+          </SocialLink>
+          <SocialLink href="https://www.linkedin.com/in/juan-pablo-ferro-a55a58151/">
+            <BsLinkedin />
+            <br />
+            <span>Juan Pablo Ferro</span>
+          </SocialLink>
+          <SocialLink href="https://github.com/JuanPaFerro">
+            <BsGithub />
+            <br />
+            <span>JuanPaFerro</span>
+          </SocialLink>
+        </SocialLinksContainer>
+      </DarkerSection>
     </AboutContainer>
   );
 };
