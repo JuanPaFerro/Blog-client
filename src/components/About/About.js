@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 export const Separator = styled.div`
   width: 100px;
@@ -12,10 +11,11 @@ export const AboutContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 1.5rem;
 `;
 export const Title = styled.h2`
   color: ${({ theme }) => theme.title};
-  margin-bottom: 30px;
+  margin: 30px 0;
   font-size: 30px;
   text-align: center;
 `;
@@ -41,13 +41,22 @@ export const ImageFooter = styled.h3`
 
 export const BioContainer = styled.div`
   color: ${({ theme }) => theme.title};
+  width: 100%;
   margin: 30px 30px 50px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly;
   align-items: center;
-  text-align: justify;
   letter-spacing: 1px;
+  div {
+    max-width: 50%;
+  }
+  @media (max-width: 600px) {
+    flex-direction: column;
+    div {
+      max-width: 80%;
+    }
+  }
 `;
 export const DarkerSection = styled.div`
   background: ${({ theme }) => theme.container};

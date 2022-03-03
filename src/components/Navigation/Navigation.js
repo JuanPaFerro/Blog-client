@@ -26,6 +26,17 @@ export const Menu = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 700px) {
+    display: ${({ display }) => (display ? "flex" : "none")};
+    background-color: ${({ theme }) => theme.container};
+    border-radius: 0 0 0 5px;
+    flex-direction: column;
+    padding: 10px;
+    top: 50px;
+    right: 0;
+    position: absolute;
+    justify-content: flex-end;
+  }
 `;
 
 export const MenuItem = styled(Link)`
@@ -40,4 +51,9 @@ export const MenuItem = styled(Link)`
   &:hover {
     border: 2px solid ${({ theme }) => theme.content};
   }
+`;
+
+export const Button = styled.p`
+  font-size: 2rem;
+  color: ${({ theme }) => theme.content};
 `;
