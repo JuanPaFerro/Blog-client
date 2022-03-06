@@ -19,7 +19,7 @@ const Navigation = () => {
       <Button onClick={() => setMenuDisplay((prevState) => !prevState)}>
         {menuDisplay ? <BsX /> : <GiHamburgerMenu />}
       </Button>
-      <Menu display={menuDisplay}>
+      <Menu menuDisplay={menuDisplay}>
         <MenuItem theme={themeMode} to="/blog">
           Blog
         </MenuItem>

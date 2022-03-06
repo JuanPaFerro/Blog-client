@@ -27,7 +27,7 @@ export const Menu = styled.div`
   align-items: center;
   justify-content: space-between;
   @media (max-width: 700px) {
-    display: ${({ display }) => (display ? "flex" : "none")};
+    display: ${({ menuDisplay }) => (menuDisplay ? "flex" : "none")};
     background-color: ${({ theme }) => theme.container};
     border-radius: 0 0 0 5px;
     flex-direction: column;
@@ -56,7 +56,7 @@ export const MenuItem = styled(Link)`
 export const Button = styled.p`
   font-size: 2rem;
   color: ${({ theme }) => theme.content};
-  @media(min-width: 700px){
+  @media (min-width: 700px) {
     display: none;
   }
 `;
