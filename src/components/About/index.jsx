@@ -16,56 +16,24 @@ import {
   SocialLink,
 } from "./About";
 import ProjectCard from "../ProjectCard";
-import Image from "../../assets/about.jpg";
+import { useAboutInfo } from "../../hooks/useAboutInfo";
 import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
 
 const About = () => {
-  const skills = {
-    "PROGRAMMING LANGUAGES": [
-      { name: "Javascript", level: 4 },
-      { name: "Python", level: 3 },
-      { name: "PHP", level: 3 },
-    ],
-    "WEB FRAMEWORKS": [
-      { name: "React", level: 4 },
-      { name: "Angular", level: 4 },
-      { name: "Node", level: 4 },
-      { name: "Express", level: 4 },
-      { name: "Tailwind", level: 2.5 },
-      { name: "Bootstrap", level: 3 },
-    ],
-    DATABASE: [
-      { name: "MongoDB", level: 4 },
-      { name: "MySQL", level: 3 },
-      { name: "PostgreSQL", level: 3 },
-      { name: "GraphQl", level: 2.5 },
-    ],
-    "UNIT TEST FRAMEWORKS": [{ name: "Jest", level: 3 }],
-    "CODE MANAGEMENT TOOLS": [{ name: "GIT", level: 3.5 }],
-  };
-
+  const { image, description, skills } = useAboutInfo();
   return (
     <AboutContainer id="about">
       <Title>ABOUT ME</Title>
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={Image} />
+          <Photo src={image} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
         <div>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget
-            nunc lobortis mattis aliquam faucibus. Gravida arcu ac tortor
-            dignissim convallis. Et sollicitudin ac orci phasellus egestas
-            tellus rutrum tellus pellentesque. In nisl nisi scelerisque eu
-            ultrices vitae. Sapien nec sagittis aliquam malesuada bibendum arcu.
-            Vulputate eu scelerisque felis imperdiet proin fermentum. Id aliquet
-            risus feugiat in ante metus dictum at. Nisl pretium fusce id velit
-            ut. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper
-            dignissim.
-          </p>
+          {description.map((el) => (
+            <p>{el}</p>
+          ))}
         </div>
       </BioContainer>
       <DarkerSection>

@@ -56,4 +56,7 @@ export const MenuItem = styled(Link)`
 export const Button = styled.p`
   font-size: 2rem;
   color: ${({ theme }) => theme.content};
+  @media(min-width: 700px){
+    display: none;
+  }
 `;
