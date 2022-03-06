@@ -10,21 +10,14 @@ import {
 } from "./ProjectCard";
 import Image from "../../assets/tv.jpg";
 
-const ProjectCard = () => {
+const ProjectCard = ({ cardImage, cardTitle = "", cardText = "" }) => {
   return (
     <GridItem>
       <Card>
-        <Img src={Image} />
+        <Img src={cardImage || Image} />
         <CardContent>
-          <CardHeader>Header</CardHeader>
-          <CardText>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget
-            nunc lobortis mattis aliquam faucibus.{" "}
-          </CardText>
-          <CardBtn>
-            Explore <span>&rarr;</span>
-          </CardBtn>
+          <CardHeader>{cardTitle}</CardHeader>
+          <CardText>{cardText}</CardText>
         </CardContent>
       </Card>
     </GridItem>

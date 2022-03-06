@@ -32,8 +32,8 @@ const About = () => {
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
         <div>
-          {description.map((el) => (
-            <p>{el}</p>
+          {description.map((el, index) => (
+            <p key={index}>{el}</p>
           ))}
         </div>
       </BioContainer>
@@ -47,16 +47,14 @@ const About = () => {
           -Albert Einstein
         </Quote>
         {Object.entries(skills).map((category) => (
-          <Skills>
+          <Skills key={category[0]}>
             <strong>{category[0]}</strong>
             <SkillCategory>
-              {category[1].map((el) => (
-                <>
-                  <SkillItem>
-                    <span>{el.name}</span>
-                    <StarsRating stars={el.level} />
-                  </SkillItem>
-                </>
+              {category[1].map((el, index) => (
+                <SkillItem key={index}>
+                  <span>{el.name}</span>
+                  <StarsRating stars={el.level} />
+                </SkillItem>
               ))}
             </SkillCategory>
           </Skills>
