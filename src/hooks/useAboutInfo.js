@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Image from "../assets/about.jpg";
 
 export const useAboutInfo = () => {
@@ -9,7 +9,6 @@ export const useAboutInfo = () => {
     `I’m currently working at Desoft as a Frontend Engineer although I am constantly developing new features for the backend side of a few projects, so I’m on my way to becoming a skilled full stack developer.`,
     `I love teamwork and I don't feel bad when I don't know something, I take it as an opportunity to learn. I always ask my colleagues for help and I am willing to give them mine whenever they need it. I think that together we grow faster`,
   ]);
-
   const [skills, setSkills] = useState({
     "PROGRAMMING LANGUAGES": [
       { name: "Javascript", level: 4 },
@@ -33,6 +32,36 @@ export const useAboutInfo = () => {
     "UNIT TEST FRAMEWORKS": [{ name: "Jest", level: 3 }],
     "CODE MANAGEMENT TOOLS": [{ name: "GIT", level: 3.5 }],
   });
+  const [phoneNumber, setPhoneNumber] = useState("+53 54605861");
+  const [gmail, setGmail] = useState("juanpabloferroarroyo");
+  const [linkedIn, setLinkedIn] = useState({
+    link: "https://www.linkedin.com/in/juan-pablo-ferro-a55a58151/",
+    name: "Juan Pablo Ferro",
+  });
+  const [github, setGithub] = useState({
+    link: "https://github.com/JuanPaFerro",
+    name: "JuanPaFerro",
+  });
 
-  return {image,description, skills}
+  const data = {
+    image,
+    description,
+    skills,
+    phoneNumber,
+    gmail,
+    linkedIn,
+    github,
+  };
+
+  const handlers = {
+    setImage,
+    setDescription,
+    setSkills,
+    setPhoneNumber,
+    setGmail,
+    setLinkedIn,
+    setGithub,
+  };
+
+  return { data, handlers };
 };

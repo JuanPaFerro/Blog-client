@@ -15,12 +15,13 @@ import {
   SocialLinksContainer,
   SocialLink,
 } from "./About";
-import ProjectCard from "../ProjectCard";
+import Projects from "../Projects";
 import { useAboutInfo } from "../../hooks/useAboutInfo";
 import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
 
 const About = () => {
-  const { image, description, skills } = useAboutInfo();
+  const { image, description, skills, phoneNumber, gmail, linkedIn, github } =
+    useAboutInfo().data;
   return (
     <AboutContainer id="about">
       <Title>ABOUT ME</Title>
@@ -69,7 +70,7 @@ const About = () => {
         <br />
         All these projects are property of each company.
       </Quote>
-      <ProjectCard />
+      <Projects />
       <DarkerSection>
         <Title>GET IN TOUCH</Title>
         <Separator />
@@ -83,22 +84,22 @@ const About = () => {
           <SocialLink>
             <BsPhone />
             <br />
-            <span>+53 54605861</span>
+            <span>{phoneNumber}</span>
           </SocialLink>
           <SocialLink>
             <BsEnvelope />
             <br />
-            <span>juanpabloferroarroyo</span>
+            <span>{gmail}@gmail.com</span>
           </SocialLink>
-          <SocialLink href="https://www.linkedin.com/in/juan-pablo-ferro-a55a58151/">
+          <SocialLink href={linkedIn.link}>
             <BsLinkedin />
             <br />
-            <span>Juan Pablo Ferro</span>
+            <span>{linkedIn.name}</span>
           </SocialLink>
-          <SocialLink href="https://github.com/JuanPaFerro">
+          <SocialLink href={github.link}>
             <BsGithub />
             <br />
-            <span>JuanPaFerro</span>
+            <span>{github.name}</span>
           </SocialLink>
         </SocialLinksContainer>
       </DarkerSection>
