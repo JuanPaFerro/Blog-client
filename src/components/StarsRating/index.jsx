@@ -6,7 +6,8 @@ const StarsRating = ({ stars}) => {
     <Rating
       ratingValue={(stars * 100) / 5}
       readonly={true}
-      fillColor="#1083D6"
+      fillColor="#1573b6"
+      size={25}
     />
   );
 };

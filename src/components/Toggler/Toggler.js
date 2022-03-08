@@ -21,7 +21,6 @@ const Button = styled.button`
   }
 `;
 const Toggle = ({ theme, toggleTheme }) => {
-  console.log(theme);
   return (
     <Button onClick={toggleTheme} theme={theme}>
       {theme.body === "#FBFBFE" ? " Dark 🌙" : "Light ⛅"}

@@ -16,26 +16,24 @@ import {
   SocialLink,
 } from "./About";
 import Projects from "../Projects";
-import { useAboutInfo } from "../../hooks/useAboutInfo";
 import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
+import { useAboutInfo } from "../../hooks/useAboutInfo";
 
 const About = () => {
-  const { image, description, skills, phoneNumber, gmail, linkedIn, github } =
-    useAboutInfo().data;
+  const { about, loading } = useAboutInfo();
+  const { image, description, skills, phone, email, linkedin, github } = about;
+  
+
   return (
     <AboutContainer id="about">
       <Title>ABOUT ME</Title>
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={image} />
+          <Photo src={ loading ? "loading" : image} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
-        <div>
-          {description.map((el, index) => (
-            <p key={index}>{el}</p>
-          ))}
-        </div>
+        <div>{loading ? "loading" : description}</div>
       </BioContainer>
       <DarkerSection>
         <Title>MY SKILLS</Title>
@@ -46,19 +44,19 @@ const About = () => {
           <br />
           -Albert Einstein
         </Quote>
-        {Object.entries(skills).map((category) => (
-          <Skills key={category[0]}>
-            <strong>{category[0]}</strong>
-            <SkillCategory>
-              {category[1].map((el, index) => (
-                <SkillItem key={index}>
-                  <span>{el.name}</span>
-                  <StarsRating stars={el.level} />
-                </SkillItem>
-              ))}
-            </SkillCategory>
-          </Skills>
-        ))}
+        { loading ? "loading" :  skills && Object.entries(skills[0]).map((category) => (
+              <Skills key={category[0]}>
+                <strong>{category[0]}</strong>
+                <SkillCategory>
+                  {category[1].map((el, index) => (
+                    <SkillItem key={index}>
+                      <span>{el.name}</span>
+                      <StarsRating stars={el.level} />
+                    </SkillItem>
+                  ))}
+                </SkillCategory>
+              </Skills>
+            ))}
       </DarkerSection>
       <Title>PROJECTS</Title>
       <Separator />
@@ -82,22 +80,22 @@ const About = () => {
           <SocialLink>
             <BsPhone />
             <br />
-            <span>{phoneNumber}</span>
+            <span>{loading ? "loading" : phone}</span>
           </SocialLink>
           <SocialLink>
             <BsEnvelope />
             <br />
-            <span>{gmail}@gmail.com</span>
+            <span>{loading ? "loading" : email}</span>
           </SocialLink>
-          <SocialLink href={linkedIn.link}>
+          <SocialLink href={loading ? "" : linkedin}>
             <BsLinkedin />
             <br />
-            <span>{linkedIn.name}</span>
+            <span>{ loading ? "loading" : linkedin}</span>
           </SocialLink>
-          <SocialLink href={github.link}>
+          <SocialLink href={loading ? "" : github}>
             <BsGithub />
             <br />
-            <span>{github.name}</span>
+            <span>{loading ? "loading" :  github}</span>
           </SocialLink>
         </SocialLinksContainer>
       </DarkerSection>
