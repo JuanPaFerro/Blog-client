@@ -48,7 +48,7 @@ export const BioContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   letter-spacing: 1px;
-  div {
+  &>div {
     max-width: 50%;
   }
   @media (max-width: 600px) {

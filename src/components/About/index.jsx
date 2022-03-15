@@ -18,11 +18,12 @@ import {
 import Projects from "../Projects";
 import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
 import { useAboutInfo } from "../../hooks/useAboutInfo";
+import MDEditor from "@uiw/react-md-editor";
 
 const About = () => {
   const { about, loading } = useAboutInfo();
   const { image, description, skills, phone, email, linkedin, github } = about;
-  
+  const publicFiles = "http://localhost:5000/images/";
 
   return (
     <AboutContainer id="about">
@@ -30,10 +31,10 @@ const About = () => {
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={ loading ? "loading" : image} />
+          <Photo src={publicFiles + image} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
-        <div>{loading ? "loading" : description}</div>
+        <div>{loading ? "loading" : <MDEditor.Markdown source={description}/>}</div>
       </BioContainer>
       <DarkerSection>
         <Title>MY SKILLS</Title>
@@ -44,7 +45,10 @@ const About = () => {
           <br />
           -Albert Einstein
         </Quote>
-        { loading ? "loading" :  skills && Object.entries(skills[0]).map((category) => (
+        {loading
+          ? "loading"
+          : skills &&
+            Object.entries(skills[0]).map((category) => (
               <Skills key={category[0]}>
                 <strong>{category[0]}</strong>
                 <SkillCategory>
@@ -90,12 +94,12 @@ const About = () => {
           <SocialLink href={loading ? "" : linkedin}>
             <BsLinkedin />
             <br />
-            <span>{ loading ? "loading" : linkedin}</span>
+            <span>{loading ? "loading" : linkedin}</span>
           </SocialLink>
           <SocialLink href={loading ? "" : github}>
             <BsGithub />
             <br />
-            <span>{loading ? "loading" :  github}</span>
+            <span>{loading ? "loading" : github}</span>
           </SocialLink>
         </SocialLinksContainer>
       </DarkerSection>

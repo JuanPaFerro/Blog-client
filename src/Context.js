@@ -3,7 +3,6 @@ import { darkTheme, lightTheme } from "./components/Theme/Theme";
 import { useDarkMode } from "./hooks/useDarkMode";
 export const Context = createContext();
 
-
 export const Provider = ({ children }) => {
   const [theme, themeToggler] = useDarkMode();
 
@@ -11,7 +10,6 @@ export const Provider = ({ children }) => {
     return window.sessionStorage.getItem("token");
   });
   const themeMode = theme === "light" ? lightTheme : darkTheme;
-
 
   const value = {
     themeMode,
@@ -23,6 +21,7 @@ export const Provider = ({ children }) => {
       window.sessionStorage.setItem("username", data.username);
       window.sessionStorage.setItem("email", data.email);
       window.sessionStorage.setItem("image", data.profilePic);
+      window.sessionStorage.setItem("role", data.role);
     },
     removeAuth: () => {
       setIsAuth(false);

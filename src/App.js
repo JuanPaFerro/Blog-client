@@ -10,6 +10,7 @@ import { ThemeProvider } from "styled-components";
 
 import { GlobalStyles } from "./globalStyles";
 import Layout from "./components/Layout";
+import { AdminAbout } from "./components/AdminAbout";
 
 function App() {
   const { isAuth, themeMode } = useContext(Context);
@@ -43,6 +44,18 @@ function App() {
 
           <Route
             exact
+            path="/admin/about"
+            element={
+              (window.sessionStorage.getItem("role") === "1" && (
+                <Layout>
+                  <AdminAbout />
+                </Layout>
+              )) || <Navigate replace to="/auth" />
+            }
+          />
+
+          <Route
+            exact
             path="/user"
             element={
               isAuth ? (
@@ -54,6 +67,7 @@ function App() {
               )
             }
           />
+
           <Route
             exact
             path="/auth"

@@ -1,20 +1,24 @@
 import React from "react";
 import { Grid } from "./Projects";
 import ProjectCard from "../ProjectCard";
-import { useProjects } from "../../hooks/useProjects";
+import { useGetAllProjects } from "../../hooks/useGetAllProjects";
 
 const Projects = () => {
-  const { projects } = useProjects();
+  const { projects, loading } = useGetAllProjects();
+
   return (
     <Grid>
-      {projects.map((project) => (
-        <ProjectCard
-          key={project.id}
-          cardImage={project.image}
-          cardTitle={project.title}
-          cardText={project.content}
-        />
-      ))}
+      {loading
+        ? "loading"
+        : projects.map((project) => (
+            <ProjectCard
+              key={project._id}
+              cardId={project._id}
+              cardImage={project.image}
+              cardTitle={project.title}
+              cardText={project.content}
+            />
+          ))}
     </Grid>
   );
 };

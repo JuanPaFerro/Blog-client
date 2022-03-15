@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   GridItem,
   Card,
@@ -8,9 +8,13 @@ import {
   CardText,
   CardBtn,
 } from "./ProjectCard";
+import { Context } from "../../Context";
+
 import Image from "../../assets/tv.jpg";
 
-const ProjectCard = ({ cardImage, cardTitle = "", cardText = "" }) => {
+const ProjectCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
+  const { isAuth } = useContext(Context);
+
   return (
     <GridItem>
       <Card>
@@ -18,6 +22,7 @@ const ProjectCard = ({ cardImage, cardTitle = "", cardText = "" }) => {
         <CardContent>
           <CardHeader>{cardTitle}</CardHeader>
           <CardText>{cardText}</CardText>
+          {isAuth && (window.sessionStorage.getItem("role") && <CardBtn>Editar</CardBtn> ) }
         </CardContent>
       </Card>
     </GridItem>
