@@ -9,6 +9,7 @@ import {
   CardBtn,
 } from "./ProjectCard";
 import { Context } from "../../Context";
+import { BsPencil } from "react-icons/bs";
 
 import Image from "../../assets/tv.jpg";
 
@@ -22,7 +23,11 @@ const ProjectCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
         <CardContent>
           <CardHeader>{cardTitle}</CardHeader>
           <CardText>{cardText}</CardText>
-          {isAuth && (window.sessionStorage.getItem("role") && <CardBtn>Editar</CardBtn> ) }
+          {isAuth && window.sessionStorage.getItem("role") && (
+            <CardBtn to={`admin/project/${cardId}`}>
+              <BsPencil />
+            </CardBtn>
+          )}
         </CardContent>
       </Card>
     </GridItem>

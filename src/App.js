@@ -11,6 +11,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./globalStyles";
 import Layout from "./components/Layout";
 import { AdminAbout } from "./components/AdminAbout";
+import AdminProject from "./components/AdminProject";
 
 function App() {
   const { isAuth, themeMode } = useContext(Context);
@@ -49,6 +50,18 @@ function App() {
               (window.sessionStorage.getItem("role") === "1" && (
                 <Layout>
                   <AdminAbout />
+                </Layout>
+              )) || <Navigate replace to="/auth" />
+            }
+          />
+
+          <Route
+            exact
+            path="/admin/project/:id"
+            element={
+              (window.sessionStorage.getItem("role") === "1" && (
+                <Layout>
+                  <AdminProject />
                 </Layout>
               )) || <Navigate replace to="/auth" />
             }

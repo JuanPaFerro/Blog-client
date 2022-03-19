@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Grid = styled.div`
   display: grid;
@@ -60,12 +61,14 @@ export const CardText = styled.p`
   margin-bottom: 1rem;
 `;
 
-export const CardBtn = styled.button`
+export const CardBtn = styled(Link)`
+  position: absolute;
+  top: 0;
+  right:0;
   display: block;
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.5rem;
-  text-align: center;
+  width: fit-content;
+  text-decoration: none;
+  padding: 0.5rem;
   color: ${({ theme }) => theme.title};
   background-color: ${({ theme }) => theme.container};
   border: 1px solid ${({ theme }) => theme.toggleBorder};
@@ -73,16 +76,8 @@ export const CardBtn = styled.button`
   transition: $transition;
   cursor: pointer;
 
-  span {
-    margin-left: 1rem;
-    transition: $transition;
-  }
 
   &:hover {
-    background-color: ${({ theme }) => theme.main};
-
-    span {
-      margin-left: 1.5rem;
-    }
+    background-color: ${({ theme }) => theme.main};    
   }
 `;

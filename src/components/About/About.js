@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Separator = styled.div`
   width: 100px;
@@ -48,7 +49,7 @@ export const BioContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   letter-spacing: 1px;
-  &>div {
+  & > div {
     max-width: 50%;
   }
   @media (max-width: 600px) {
@@ -108,5 +109,18 @@ export const SocialLink = styled.a`
   }
   &:hover {
     color: ${({ theme }) => theme.main};
+  }
+`;
+
+export const EditAboutLink = styled(Link)`
+  padding: 5px 10px;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: ${({ theme }) => theme.content};
+  transition: 0.5s;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.content};
   }
 `;

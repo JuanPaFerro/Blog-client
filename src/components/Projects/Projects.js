@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Grid = styled.div`
   display: grid;
@@ -15,4 +16,7 @@ export const Grid = styled.div`
   @include media(large) {
     grid-gap: 3rem;
   }
+`;
+
+export const AddButton = styled(Link)`
 `;

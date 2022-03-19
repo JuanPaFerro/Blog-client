@@ -13,7 +13,7 @@ const Navigation = () => {
     <NavBar theme={themeMode}>
       <h1>
         <TextLogo theme={themeMode} to="/">
-          jf3rr0
+          Juan P. Ferro
         </TextLogo>
       </h1>
       <Button onClick={() => setMenuDisplay((prevState) => !prevState)}>

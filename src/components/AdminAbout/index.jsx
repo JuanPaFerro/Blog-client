@@ -79,6 +79,16 @@ export const AdminAbout = () => {
     delete newSkills[0][category];
     formik.setFieldValue("skills", newSkills);
   };
+  const deleteSkill = (category, index) => {
+    const newSkills = formik.values.skills;
+
+    let firstHalf = newSkills[0][category].slice(0, index);
+    let secondHalf = newSkills[0][category].slice(index + 1);
+    
+    newSkills[0][category] = [...firstHalf, ...secondHalf];
+
+    formik.setFieldValue("skills", newSkills);
+  };
 
   return (
     <GeneralContainer>
@@ -194,7 +204,7 @@ export const AdminAbout = () => {
                         />
                         <DeleteButon
                           type="button"
-                          onClick={() => addSkill(category[0])}
+                          onClick={() => deleteSkill(category[0], index)}
                         >
                           Delete
                         </DeleteButon>

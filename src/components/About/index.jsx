@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import StarsRating from "../StarsRating";
 import {
   AboutContainer,
@@ -13,10 +13,18 @@ import {
   Skills,
   SkillItem,
   SocialLinksContainer,
+  EditAboutLink,
   SocialLink,
 } from "./About";
 import Projects from "../Projects";
-import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
+import { Context } from "../../Context";
+import {
+  BsLinkedin,
+  BsGithub,
+  BsEnvelope,
+  BsPhone,
+  BsPencil,
+} from "react-icons/bs";
 import { useAboutInfo } from "../../hooks/useAboutInfo";
 import MDEditor from "@uiw/react-md-editor";
 
@@ -24,9 +32,16 @@ const About = () => {
   const { about, loading } = useAboutInfo();
   const { image, description, skills, phone, email, linkedin, github } = about;
   const publicFiles = "http://localhost:5000/images/";
+  const { isAuth } = useContext(Context);
 
   return (
     <AboutContainer id="about">
+      {isAuth && window.sessionStorage.getItem("role") && (
+        <EditAboutLink to="/admin/about">
+          <BsPencil /> Edit
+        </EditAboutLink>
+      )}
+
       <Title>ABOUT ME</Title>
       <Separator />
       <BioContainer>
@@ -34,7 +49,9 @@ const About = () => {
           <Photo src={publicFiles + image} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
-        <div>{loading ? "loading" : <MDEditor.Markdown source={description}/>}</div>
+        <div>
+          {loading ? "loading" : <MDEditor.Markdown source={description} />}
+        </div>
       </BioContainer>
       <DarkerSection>
         <Title>MY SKILLS</Title>
