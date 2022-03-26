@@ -12,7 +12,7 @@ const Projects = () => {
 
   return (
     <>
-      {isAuth && window.sessionStorage.getItem("role") && (
+      {isAuth && window.sessionStorage.getItem("role") === "1" && (
         <AddButton to="/admin/project/new">
           <BsPlusCircle size={50} color="#1573b6" />
         </AddButton>

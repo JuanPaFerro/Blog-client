@@ -23,7 +23,7 @@ const ProjectCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
         <CardContent>
           <CardHeader>{cardTitle}</CardHeader>
           <CardText>{cardText}</CardText>
-          {isAuth && window.sessionStorage.getItem("role") && (
+          {isAuth && window.sessionStorage.getItem("role")==="1" && (
             <CardBtn to={`admin/project/${cardId}`}>
               <BsPencil />
             </CardBtn>

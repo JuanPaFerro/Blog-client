@@ -36,7 +36,7 @@ const About = () => {
 
   return (
     <AboutContainer id="about">
-      {isAuth && window.sessionStorage.getItem("role") && (
+      {isAuth && window.sessionStorage.getItem("role")==="1" && (
         <EditAboutLink to="/admin/about">
           <BsPencil /> Edit
         </EditAboutLink>

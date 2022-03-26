@@ -4,20 +4,15 @@ import { useGetOnePostById } from "../../hooks/useGetOnePostById";
 
 const PostDetail = () => {
   const { id } = useParams();
-  const { post, loading } = useGetOnePostById(id);
+  const { post } = useGetOnePostById(id);
 
-  if (loading) {
-    return <h1>Loading</h1>;
-  }
-  if (!loading) {
-    return (
-      <div>
-        <h1>{post.title}</h1>
-        <span>{post.username}</span>
-        <p>{post.desc}</p>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <h1>{post[0] && post[0].title}</h1>
+      <span>{post[0] && post[0].user[0].username}</span>
+      <p>{post[0] && post[0].desc}</p>
+    </div>
+  );
 };
 
 export default PostDetail;
