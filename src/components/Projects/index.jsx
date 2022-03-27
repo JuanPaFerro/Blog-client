@@ -6,7 +6,6 @@ import { BsPlusCircle } from "react-icons/bs";
 import { Context } from "../../Context";
 import { Link } from "react-router-dom";
 
-
 const Projects = () => {
   const { projects, loading } = useGetAllProjects();
   const { isAuth } = useContext(Context);

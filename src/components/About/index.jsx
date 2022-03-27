@@ -25,6 +25,7 @@ import {
   BsPhone,
   BsPencil,
 } from "react-icons/bs";
+import UserPlaceholderImage from "../../assets/user.png";
 import { useAboutInfo } from "../../hooks/useAboutInfo";
 import MDEditor from "@uiw/react-md-editor";
 
@@ -46,7 +47,7 @@ const About = () => {
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={image ? publicFiles + image : ""} />
+          <Photo src={image ? publicFiles + image : UserPlaceholderImage} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
         <div>

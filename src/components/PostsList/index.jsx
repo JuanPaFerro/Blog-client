@@ -15,8 +15,14 @@ const PostsList = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: 50,
       }}
     >
+      {isAuth && window.sessionStorage.getItem("role") === "1" && (
+        <Link to="/admin/post/new">
+          <BsPlusCircle size={50} color="#1573b6" />
+        </Link>
+      )}
       <Grid>
         {posts.map((post) => (
           <PostCard
@@ -30,11 +36,6 @@ const PostsList = () => {
           </PostCard>
         ))}
       </Grid>
-      {isAuth && window.sessionStorage.getItem("role") === "1" && (
-        <Link to="/admin/post/new">
-          <BsPlusCircle size={50} color="#1573b6" />
-        </Link>
-      )}
     </div>
   );
 };

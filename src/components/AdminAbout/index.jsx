@@ -19,17 +19,19 @@ import {
   SkillItem,
   AddButton,
   Input,
-  NewSkillItem,
   DeleteButon,
   FlexRowContainer,
-  SaveButton,
 } from "./AdminAbout";
 import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 export const AdminAbout = () => {
-  const { about, loading } = useAboutInfo();
+  const { about } = useAboutInfo();
+  const navigate = useNavigate();
   const { _id, image, description, skills, phone, email, linkedin, github } =
-    about;
+  about;
+  const publicFiles = "http://localhost:5000/images/";
+  
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
@@ -41,11 +43,25 @@ export const AdminAbout = () => {
       linkedin,
       github,
     },
-    onSubmit: (values) => {
-      axios.put(`http://localhost:5000/api/about/${_id}`, values);
+    onSubmit: async (values) => {
+      await axios.put(`http://localhost:5000/api/about/${_id}`, values);
+      navigate(`/`);
     },
   });
-  const publicFiles = "http://localhost:5000/images/";
+
+  const handleFile = async (fileInput) => {
+    const data = new FormData();
+    const filename = Date.now() + fileInput.name;
+    data.append("name", filename);
+    data.append("file", fileInput);
+
+    try {
+      await axios.post("http://localhost:5000/api/upload", data);
+      formik.setFieldValue("image", filename);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSkillChange = (event, category, index, type) => {
     const newSkills = formik.values.skills;
@@ -85,7 +101,7 @@ export const AdminAbout = () => {
 
     let firstHalf = newSkills[0][category].slice(0, index);
     let secondHalf = newSkills[0][category].slice(index + 1);
-    
+
     newSkills[0][category] = [...firstHalf, ...secondHalf];
 
     formik.setFieldValue("skills", newSkills);
@@ -99,7 +115,7 @@ export const AdminAbout = () => {
           <Subtitle>Photo</Subtitle>
           <Image src={publicFiles + formik.values.image} />
 
-          <Input type="file" />
+          <Input type="file" onChange={(e) => handleFile(e.target.files[0])} />
         </ImageContainer>
         <MDEditorContainer>
           <Subtitle>Description</Subtitle>
@@ -164,7 +180,7 @@ export const AdminAbout = () => {
           <Skills>
             {formik.values.skills &&
               Object.entries(formik.values.skills[0]).map((category) => (
-                <div>
+                <div key={category[0]}>
                   <SkillsCategory key={category[0]}>
                     <FlexRowContainer>
                       <Subtitle>{category[0]}</Subtitle>
@@ -240,7 +256,7 @@ export const AdminAbout = () => {
           </Skills>
         </SkillsContainer>
 
-        <AddButton style={{margin: "10px auto"}} type="submit">
+        <AddButton style={{ margin: "10px auto" }} type="submit">
           Save
         </AddButton>
       </Form>

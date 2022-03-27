@@ -65,13 +65,27 @@ export const AddButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.main};
-    color: ${({ theme }) => theme.title};
+    color: ${({ theme }) => theme.body};
+  }
+`;
+export const DeleteButton = styled.button`
+  width: 80px;
+  height: 30px;
+  font-weight: bold;
+  background-color: ${({ theme }) => theme.body};
+  color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  margin-left: 20px;
+
+  &:hover {
+    background-color: red;
+    color: ${({ theme }) => theme.body};
   }
 `;
 export const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  margin: 20px auto;
 `;
 
 export const Banner = styled.div`
@@ -92,7 +106,7 @@ export const BannerInfoContainer = styled.div`
   background: rgba(0, 0, 0, 0.3);
   border-radius: 0 0 5px 5px;
   transition: 0.3s ease-in-out;
-  padding: .7rem  ;
+  padding: 0.7rem;
 `;
 export const UserImage = styled.img`
   height: 50px;

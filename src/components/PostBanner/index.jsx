@@ -8,18 +8,21 @@ import {
   UserImage,
   UserName,
 } from "./PostBanner";
-import DefaultPostImage from "../../assets/bg.jpg";
-import DefaultAuthorImage from "../../assets/tv.jpg";
+import DefaultPostImage from "../../assets/post.jpg";
+import DefaultAuthorImage from "../../assets/user.png";
 import { useGetAllPosts } from "../../hooks/useGetAllPosts";
 
 const PostBanner = () => {
   const { firstPost } = useGetAllPosts();
+  const publicFiles = "http://localhost:5000/images/";
 
   return (
     <Container>
       <Banner
         to={`/post/${firstPost._id}`}
-        background={firstPost.photo || DefaultPostImage}
+        background={
+          firstPost.photo ? publicFiles + firstPost.photo : DefaultPostImage
+        }
       >
         <BannerInfoContainer>
           <PostTitle>{firstPost.title}</PostTitle>

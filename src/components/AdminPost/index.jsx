@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import MDEditor from "@uiw/react-md-editor";
 import {
@@ -17,15 +17,18 @@ import {
   UserImage,
   UserName,
   BannerInfoContainer,
+  DeleteButton,
 } from "./AdminPost";
 import axios from "axios";
 import { useGetOnePostById } from "../../hooks/useGetOnePostById";
-import DefaultImage from "../../assets/bg.jpg";
-import DefaultAuthorImage from "../../assets/bg.jpg";
+import DefaultImage from "../../assets/post.jpg";
+import DefaultAuthorImage from "../../assets/user.png";
 
 const AdminPost = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { post } = useGetOnePostById(id);
+  const publicFiles = "http://localhost:5000/images/";
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -37,16 +40,36 @@ const AdminPost = () => {
       username: post[0]?.user[0].username,
       profilePic: post[0]?.user[0].profilePic,
     },
-    onSubmit: ({ username, profilePic, ...values }) => {
+    onSubmit: async ({ username, profilePic, ...values }) => {
       if (id === "new") {
-        console.log(values)
-        axios.post(`http://localhost:5000/api/posts/`, values);
+        console.log(values);
+        await axios.post(`http://localhost:5000/api/posts/`, values);
       } else {
-        console.log(values)
-        axios.put(`http://localhost:5000/api/posts/${id}`, values);
+        console.log(values);
+        await axios.put(`http://localhost:5000/api/posts/${id}`, values);
       }
+      navigate("/blog");
     },
   });
+
+  const handleDelete = async () => {
+    await axios.delete(`http://localhost:5000/api/posts/${id}`);
+    navigate("/blog");
+  };
+
+  const handleFile = async (fileInput) => {
+    const data = new FormData();
+    const filename = Date.now() + fileInput.name;
+    data.append("name", filename);
+    data.append("file", fileInput);
+
+    try {
+      await axios.post("http://localhost:5000/api/upload", data);
+      formik.setFieldValue("photo", filename);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <GeneralContainer>
@@ -54,7 +77,13 @@ const AdminPost = () => {
         {id === "new" ? "Create a new Post" : `Edit : '${formik.values.title}'`}
       </Title>
       <ImageContainer>
-        <Banner background={formik.values.photo || DefaultImage}>
+        <Banner
+          background={
+            formik.values.photo
+              ? publicFiles + formik.values.photo
+              : DefaultImage
+          }
+        >
           {id === "new" ? (
             ""
           ) : (
@@ -76,8 +105,7 @@ const AdminPost = () => {
           <Subtitle>Upload Image</Subtitle>
           <PostInput
             type="file"
-            value={formik.values.photo}
-            onChange={formik.handleChange("photo")}
+            onChange={(e) => handleFile(e.target.files[0])}
           />
         </PostTitleContainer>
         <MDContainer>
@@ -89,7 +117,8 @@ const AdminPost = () => {
           />
         </MDContainer>
         <ButtonContainer>
-          <AddButton >Save</AddButton>
+          <AddButton>Save</AddButton>
+          <DeleteButton onClick={() => handleDelete()}>Delete</DeleteButton>
         </ButtonContainer>
       </Form>
     </GeneralContainer>

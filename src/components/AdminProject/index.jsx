@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetOneProjectById } from "../../hooks/useGetOneProjectById";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -14,15 +14,18 @@ import {
   TitleContainer,
   MDContainer,
   SaveButton,
+  DeleteButton,
   ButtonContainer,
 } from "./AdminProject";
-import DefaultImage from "../../assets/tv.jpg";
+import DefaultImage from "../../assets/placeholder.png";
 import MDEditor from "@uiw/react-md-editor";
 
 const AdminProject = () => {
   const { id } = useParams();
-  const { project, loading } = useGetOneProjectById(id);
+  const navigate = useNavigate();
+  const { project } = useGetOneProjectById(id);
   const { title, image, content, link } = project;
+  const publicFiles = "http://localhost:5000/images/";
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -32,14 +35,34 @@ const AdminProject = () => {
       content,
       link,
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       if (id === "new") {
-        axios.post(`http://localhost:5000/api/projects/`, values);
+        await axios.post(`http://localhost:5000/api/projects/`, values);
       } else {
-        axios.put(`http://localhost:5000/api/projects/${id}`, values);
+        await axios.put(`http://localhost:5000/api/projects/${id}`, values);
       }
+      navigate("/");
     },
   });
+
+  const handleDelete = () => {
+    axios.delete(`http://localhost:5000/api/projects/${id}`);
+    navigate("/");
+  };
+
+  const handleFile = async (fileInput) => {
+    const data = new FormData();
+    const filename = Date.now() + fileInput.name;
+    data.append("name", filename);
+    data.append("file", fileInput);
+
+    try {
+      await axios.post("http://localhost:5000/api/upload", data);
+      formik.setFieldValue("image", filename);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
@@ -47,8 +70,14 @@ const AdminProject = () => {
       <Form onSubmit={formik.handleSubmit}>
         <ImageContainer>
           <Subtitle>Image:</Subtitle>
-          <Image src={formik.values.image || DefaultImage} />
-          <Input type="file" />
+          <Image
+            src={
+              formik.values.image
+                ? publicFiles + formik.values.image
+                : DefaultImage
+            }
+          />
+          <Input type="file" onChange={(e) => handleFile(e.target.files[0])} />
         </ImageContainer>
 
         <MDContainer>
@@ -77,8 +106,13 @@ const AdminProject = () => {
               onChange={formik.handleChange("link")}
             />
           </div>
-          <SaveButton type="submit">Save</SaveButton>
         </TitleContainer>
+        <ButtonContainer>
+          <SaveButton type="submit">Save</SaveButton>
+          <DeleteButton type="button" onClick={() => handleDelete()}>
+            Delete
+          </DeleteButton>
+        </ButtonContainer>
       </Form>
     </Container>
   );

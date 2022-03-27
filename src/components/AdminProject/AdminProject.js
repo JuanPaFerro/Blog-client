@@ -61,22 +61,36 @@ export const Input = styled.input`
 `;
 
 export const SaveButton = styled.button`
+  width: 80px;
+  height: 30px;
+  font-weight: bold;
   background-color: ${({ theme }) => theme.body};
-  border: 2px solid ${({ theme }) => theme.content};
-  color: ${({ theme }) => theme.content};
-  padding: 10px 20px;
-  width: fit-content;
+  color: ${({ theme }) => theme.main};
+  border: 2px solid ${({ theme }) => theme.main};
   border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.5s;
-  cursor: pointer;
+
   &:hover {
-    background-color: ${({ theme }) => theme.title};
+    background-color: ${({ theme }) => theme.main};
     color: ${({ theme }) => theme.body};
   }
+`;
+export const DeleteButton = styled.button`
+  width: 80px;
+  height: 30px;
+  font-weight: bold;
+  background-color: ${({ theme }) => theme.body};
+  color: red;
+  border: 2px solid red;
+  border-radius: 5px;
+  margin-left: 20px;
+
+  &:hover {
+    background-color: red;
+    color: ${({ theme }) => theme.body};
+  }
+`;
+export const ButtonContainer = styled.div`
+  display: flex;
+  width:100% ;
+  justify-content: center ;
 `;

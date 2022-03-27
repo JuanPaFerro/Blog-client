@@ -10,15 +10,17 @@ import {
 } from "../StandardCard/StandardCard";
 import { Context } from "../../Context";
 import { BsPencil } from "react-icons/bs";
-import Image from "../../assets/tv.jpg";
+import DefaultImage from "../../assets/post.jpg";
+
 
 const PostCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
   const { isAuth } = useContext(Context);
+  const publicFiles = "http://localhost:5000/images/";
 
   return (
-    <GridItemLink to={`/post/${cardId}`}>
-      <Card>
-        <Img src={cardImage || Image} />
+    <GridItemLink to={`/post/${cardId}`} style={{ textDecoration: "none" }}>
+      <Card >
+        <Img src={cardImage ? publicFiles+cardImage : DefaultImage} />
         <CardContent>
           <CardHeader>{cardTitle}</CardHeader>
           <CardText>{cardText}</CardText>
