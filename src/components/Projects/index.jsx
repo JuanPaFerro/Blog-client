@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Grid } from "./Projects";
+import { Grid } from "../StandardCard/StandardCard";
 import ProjectCard from "../ProjectCard";
 import { useGetAllProjects } from "../../hooks/useGetAllProjects";
-import { AddButton } from "./Projects";
 import { BsPlusCircle } from "react-icons/bs";
 import { Context } from "../../Context";
+import { Link } from "react-router-dom";
+
 
 const Projects = () => {
   const { projects, loading } = useGetAllProjects();
@@ -13,9 +14,9 @@ const Projects = () => {
   return (
     <>
       {isAuth && window.sessionStorage.getItem("role") === "1" && (
-        <AddButton to="/admin/project/new">
+        <Link to="/admin/project/new">
           <BsPlusCircle size={50} color="#1573b6" />
-        </AddButton>
+        </Link>
       )}
       <Grid>
         {loading

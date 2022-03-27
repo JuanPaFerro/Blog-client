@@ -7,10 +7,9 @@ import {
   CardHeader,
   CardText,
   CardBtn,
-} from "./ProjectCard";
+} from "../StandardCard/StandardCard";
 import { Context } from "../../Context";
 import { BsPencil } from "react-icons/bs";
-
 import Image from "../../assets/tv.jpg";
 
 const ProjectCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {

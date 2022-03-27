@@ -22,6 +22,7 @@ import {
   NewSkillItem,
   DeleteButon,
   FlexRowContainer,
+  SaveButton,
 } from "./AdminAbout";
 import { BsLinkedin, BsGithub, BsEnvelope, BsPhone } from "react-icons/bs";
 
@@ -239,9 +240,9 @@ export const AdminAbout = () => {
           </Skills>
         </SkillsContainer>
 
-        {/* <button type="submit" onClick={formik.handleSubmit}>
+        <AddButton style={{margin: "10px auto"}} type="submit">
           Save
-        </button> */}
+        </AddButton>
       </Form>
     </GeneralContainer>
   );

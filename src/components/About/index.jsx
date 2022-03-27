@@ -36,7 +36,7 @@ const About = () => {
 
   return (
     <AboutContainer id="about">
-      {isAuth && window.sessionStorage.getItem("role")==="1" && (
+      {isAuth && window.sessionStorage.getItem("role") === "1" && (
         <EditAboutLink to="/admin/about">
           <BsPencil /> Edit
         </EditAboutLink>
@@ -46,7 +46,7 @@ const About = () => {
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={publicFiles + image} />
+          <Photo src={image ? publicFiles + image : ""} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
         <div>

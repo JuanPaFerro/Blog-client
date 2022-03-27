@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export const Grid = styled.div`
   display: grid;
-  width: 100%;
+  width: 80%;
+  margin: 0 10% ;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
 
   @media (max-width: 950px) {
     grid-template-columns: 1fr 1fr;
@@ -18,9 +18,12 @@ export const Grid = styled.div`
     grid-gap: 3rem;
   }
 `;
-
 export const GridItem = styled.div`
   width: 300px;
+`;
+export const GridItemLink = styled(Link)`
+  width: 300px;
+  text-decoration: none;
 `;
 
 export const Card = styled.div`
@@ -59,12 +62,18 @@ export const CardText = styled.p`
   line-height: 1.4;
   color: ${({ theme }) => theme.content};
   margin-bottom: 1rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
 `;
 
 export const CardBtn = styled(Link)`
   position: absolute;
   top: 0;
-  right:0;
+  right: 0;
   display: block;
   width: fit-content;
   text-decoration: none;
@@ -76,8 +85,7 @@ export const CardBtn = styled(Link)`
   transition: $transition;
   cursor: pointer;
 
-
   &:hover {
-    background-color: ${({ theme }) => theme.main};    
+    background-color: ${({ theme }) => theme.main};
   }
 `;

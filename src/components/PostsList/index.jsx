@@ -1,17 +1,41 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { useGetAllPosts } from "../../hooks/useGetAllPosts";
+import PostCard from "../PostCard";
+import { Grid } from "../StandardCard/StandardCard";
+import { Context } from "../../Context";
+import { BsPlusCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const PostsList = () => {
   const { posts } = useGetAllPosts();
+  const { isAuth } = useContext(Context);
   return (
-    <>
-      {posts.map((post) => (
-        <li key={post._id}>
-          <Link to={`/post/${post._id}`}>{post.title}</Link>
-        </li>
-      ))}
-    </>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <Grid>
+        {posts.map((post) => (
+          <PostCard
+            key={post._id}
+            cardId={post._id}
+            cardImage={post.photo}
+            cardTitle={post.title}
+            cardText={post.desc}
+          >
+            {post.title}
+          </PostCard>
+        ))}
+      </Grid>
+      {isAuth && window.sessionStorage.getItem("role") === "1" && (
+        <Link to="/admin/post/new">
+          <BsPlusCircle size={50} color="#1573b6" />
+        </Link>
+      )}
+    </div>
   );
 };
 
