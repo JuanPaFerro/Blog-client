@@ -98,9 +98,7 @@ function App() {
             path="/auth"
             element={
               !isAuth ? (
-                <Layout>
                   <Auth />
-                </Layout>
               ) : (
                 <Navigate replace to="/user" />
               )

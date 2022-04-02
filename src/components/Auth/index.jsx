@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useInputValue } from "../../hooks/useInputValue";
 import { Context } from "../../Context";
+import { AlternateAuth, Card, Container, Form, Input, SubmitButton, Title } from "./Auth";
 
 const Auth = () => {
   const { activateAuth } = useContext(Context);
@@ -28,19 +29,22 @@ const Auth = () => {
   };
 
   return (
-    <>
-      <form onSubmit={handleAuth}>
-        <input placeholder="username" type="text" {...username} />
-        {isRegister && <input placeholder="email" type="email" {...email} />}
-        <input placeholder="password" type="password" {...password} />
-        <button type="submit">Submit</button>
-      </form>
-      <span onClick={() => setIsRegister((prev) => !prev)}>
-        {isRegister
-          ? "Already have an account? - Login"
-          : "Don't have an account? - Register"}
-      </span>
-    </>
+    <Container>
+      <Card>
+        <Title>{isRegister ? "Register" : "Login"}</Title>
+        <Form onSubmit={handleAuth}>
+          <Input placeholder="username" type="text" {...username} />
+          {isRegister && <Input placeholder="email" type="email" {...email} />}
+          <Input placeholder="password" type="password" {...password} />
+          <SubmitButton type="submit">Submit</SubmitButton>
+        </Form>
+        <AlternateAuth onClick={() => setIsRegister((prev) => !prev)}>
+          {isRegister
+            ? "Already have an account? - Login"
+            : "Don't have an account? - Register"}
+        </AlternateAuth>
+      </Card>
+    </Container>
   );
 };
 

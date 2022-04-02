@@ -23,11 +23,12 @@ const PostDetail = () => {
   const { id } = useParams();
   const { post } = useGetOnePostById(id);
   const { isAuth } = useContext(Context);
+  const publicFiles = "http://localhost:5000/images/";
 
   return (
     <Container>
       <ImageContainer>
-        <Image src={post[0] && (post[0].photo || PlaceholderImage)} />
+        <Image src={post[0] && (post[0].photo ? publicFiles + post[0].photo : PlaceholderImage)} />
       </ImageContainer>
       <TitleContainer>
         <Title>{post[0] && post[0].title}</Title>
