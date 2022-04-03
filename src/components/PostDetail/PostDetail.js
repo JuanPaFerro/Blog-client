@@ -13,15 +13,24 @@ export const ImageContainer = styled.div`
 `;
 export const DescContainer = styled.div`
   color: ${({ theme }) => theme.content};
+
 `;
 export const AuthorInfoContainer = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 500px){
+    width: 100% ;
+    justify-content: space-between ;
+  }
 `;
 export const TitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
+  @media (max-width: 970px){
+    flex-direction:column ;
+  }
 `;
 
 export const Title = styled.h1`
@@ -29,12 +38,15 @@ export const Title = styled.h1`
 `;
 export const Image = styled.img`
   width: 100%;
+  max-height: 300px ;
   object-fit: cover;
 `;
 export const AuthorImage = styled.img`
   width: 40px;
+  height: 40px;
   object-fit: cover;
   margin-left: 1.5rem;
+  border-radius: 50%;
 `;
 export const AuthorName = styled.span`
   color: ${({ theme }) => theme.content};

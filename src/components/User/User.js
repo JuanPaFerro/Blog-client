@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import BannerImage from "../../assets/post.jpg";
 
@@ -36,7 +37,7 @@ export const InfoText = styled.span`
 export const InfoRoleLabel = styled.div`
   background-color: ${({ isAdmin }) =>
     isAdmin ? "rgba(0, 200, 80, 0.9)" : "rgba(50, 120, 255, 0.9)"};
-    font-weight: bold ;
+  font-weight: bold;
   padding: 5px 10px;
   border-radius: 5px;
   width: fit-content;
@@ -47,6 +48,7 @@ export const InfoRoleLabel = styled.div`
 export const ProfilePic = styled.img`
   object-fit: cover;
   width: 150px;
+  height: 150px;
   position: relative;
   bottom: -75px;
   border-radius: 50%;
@@ -60,5 +62,21 @@ export const LogoutButton = styled.button`
   border: 1px solid;
   color: ${({ theme }) => theme.body};
   margin-top: 20px;
-  font-weight: bold ;
+  font-weight: bold;
+  cursor: pointer;
+`;
+
+export const EditLink = styled(Link)`
+  margin-left: 1rem ;
+  padding: 5px 10px;
+  width:fit-content ;
+  text-decoration: none;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: ${({ theme }) => theme.content};
+  transition: 0.5s;
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.content};
+  }
 `;

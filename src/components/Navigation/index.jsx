@@ -26,9 +26,6 @@ const Navigation = () => {
         <MenuItem theme={themeMode} to="/">
           About Me
         </MenuItem>
-        <MenuItem theme={themeMode} to="/portfolio">
-          Portfolio
-        </MenuItem>
         <MenuItem theme={themeMode} to="/user">
           User
         </MenuItem>

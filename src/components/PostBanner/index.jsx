@@ -29,7 +29,7 @@ const PostBanner = () => {
           {firstPost.user ? (
             <PostAuthorContainer>
               <UserImage
-                src={firstPost.user[0].profilePic || DefaultAuthorImage}
+                src={firstPost.user[0].profilePic && publicFiles + firstPost.user[0].profilePic || DefaultAuthorImage}
               />
               <UserName>{firstPost.user[0].username}</UserName>
             </PostAuthorContainer>

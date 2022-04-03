@@ -88,7 +88,13 @@ const AdminPost = () => {
             ""
           ) : (
             <BannerInfoContainer>
-              <UserImage src={formik.values.profilePic || DefaultAuthorImage} />
+              <UserImage
+                src={
+                  formik.values.profilePic
+                    ? publicFiles + formik.values.profilePic
+                    : DefaultAuthorImage
+                }
+              />
               <UserName>{formik.values.username}</UserName>
             </BannerInfoContainer>
           )}

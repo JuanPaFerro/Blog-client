@@ -12,9 +12,13 @@ export const Form = styled.form`
   flex-wrap: wrap;
   width: 80%;
   justify-content: space-between;
+  @media (max-width: 840px ){
+    flex-direction: column ;
+  }
 `;
 export const Title = styled.h1`
   color: ${({ theme }) => theme.title};
+  max-width: 80% ;
 `;
 export const Subtitle = styled.h2`
   color: ${({ theme }) => theme.title};
@@ -25,13 +29,24 @@ export const MDContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media (max-width: 840px ){
+    width: 100% ;
+  }
 `;
 
 export const PostTitleContainer = styled.div`
   display: flex;
   width: 20%;
-  align-items: center;
   flex-direction: column;
+
+  @media (max-width: 840px ){
+    width: 100%;
+    display: grid ;
+    align-items:center ;
+    grid-template-columns: 1fr 1fr ;
+    
+  }
 `;
 export const PostInput = styled.input`
   margin: 15px 0;
@@ -42,6 +57,7 @@ export const PostInput = styled.input`
   border-radius: 5px;
   font-weight: bold;
   color: ${({ theme }) => theme.title};
+  max-width: 200px ;
 
   &:hover {
     border: 2px solid ${({ theme }) => theme.main};

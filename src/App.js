@@ -13,6 +13,7 @@ import Layout from "./components/Layout";
 import { AdminAbout } from "./components/AdminAbout";
 import AdminProject from "./components/AdminProject";
 import AdminPost from "./components/AdminPost";
+import AdminUser from "./components/AdminUser";
 
 function App() {
   const { isAuth, themeMode } = useContext(Context);
@@ -81,6 +82,20 @@ function App() {
 
           <Route
             exact
+            path="/admin/user/:id"
+            element={
+              isAuth ? (
+                <Layout>
+                  <AdminUser />
+                </Layout>
+              ) : (
+                <Navigate replace to="/auth" />
+              )
+            }
+          />
+
+          <Route
+            exact
             path="/user"
             element={
               isAuth ? (
@@ -96,13 +111,7 @@ function App() {
           <Route
             exact
             path="/auth"
-            element={
-              !isAuth ? (
-                  <Auth />
-              ) : (
-                <Navigate replace to="/user" />
-              )
-            }
+            element={!isAuth ? <Auth /> : <Navigate replace to="/user" />}
           />
         </Routes>
       </>
