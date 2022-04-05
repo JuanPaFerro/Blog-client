@@ -9,7 +9,7 @@ export function useGetAllPosts() {
   useEffect(() => {
     setLoadingPosts(true);
     const fetchPosts = async () => {
-      const res = await axios.get("http://localhost:5000/api/posts");
+      const res = await axios.get("http://192.168.1.103:5000/api/posts");
       const data = res.data;
       const firstPostHolder = data.shift();
       setPosts(data);

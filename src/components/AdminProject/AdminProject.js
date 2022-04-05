@@ -20,6 +20,10 @@ export const Form = styled.form`
   flex-wrap: wrap;
   width: 80%;
   justify-content: space-between;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -32,16 +36,20 @@ export const TitleContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+  margin-bottom: 50px ;
 `;
 
 export const MDContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
+  @media (max-width: 1000px){
+    width: 100% ;
+  }
 `;
 
 export const Image = styled.img`
-  height: 200px;
+  max-width: 100%;
   object-fit: cover;
 `;
 
@@ -54,7 +62,7 @@ export const Input = styled.input`
   border-radius: 5px;
   font-weight: bold;
   color: ${({ theme }) => theme.content};
-
+  max-width: 200px;
   &:hover {
     border: 2px solid ${({ theme }) => theme.main};
   }
@@ -91,6 +99,6 @@ export const DeleteButton = styled.button`
 `;
 export const ButtonContainer = styled.div`
   display: flex;
-  width:100% ;
-  justify-content: center ;
+  width: 100%;
+  justify-content: center;
 `;

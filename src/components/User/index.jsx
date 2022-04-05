@@ -20,7 +20,7 @@ const User = () => {
   const image = window.sessionStorage.getItem("image");
   const email = window.sessionStorage.getItem("email");
   const role = window.sessionStorage.getItem("role");
-  const publicFiles = "http://localhost:5000/images/";
+  const publicFiles = "http://192.168.1.103:5000/images/";
 
   return (
     <Container>

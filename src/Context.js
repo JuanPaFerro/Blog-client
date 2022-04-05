@@ -16,12 +16,12 @@ export const Provider = ({ children }) => {
     themeToggler,
     isAuth,
     activateAuth: (data) => {
-      setIsAuth(true);
       window.sessionStorage.setItem("id", data._id);
       window.sessionStorage.setItem("username", data.username);
       window.sessionStorage.setItem("email", data.email);
       window.sessionStorage.setItem("image", data.profilePic);
       window.sessionStorage.setItem("role", data.role);
+      setIsAuth(true);
     },
     removeAuth: () => {
       setIsAuth(false);

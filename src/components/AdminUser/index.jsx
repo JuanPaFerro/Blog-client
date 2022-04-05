@@ -22,7 +22,7 @@ const AdminUser = () => {
   const { user } = useGetOneUserById(id);
   const navigate = useNavigate();
   const { username, email, profilePic } = user;
-  const publicFiles = "http://localhost:5000/images/";
+  const publicFiles = "http://192.168.1.103:5000/images/";
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -33,7 +33,7 @@ const AdminUser = () => {
       profilePic,
     },
     onSubmit: async (values) => {
-      await axios.put(`http://localhost:5000/api/users/${id}`, values);
+      await axios.put(`http://192.168.1.103:5000/api/users/${id}`, values);
 
       navigate("/user");
     },
@@ -46,7 +46,7 @@ const AdminUser = () => {
     data.append("file", fileInput);
 
     try {
-      await axios.post("http://localhost:5000/api/upload", data);
+      await axios.post("http://192.168.1.103:5000/api/upload", data);
       formik.setFieldValue("profilePic", filename);
     } catch (error) {
       console.log(error);

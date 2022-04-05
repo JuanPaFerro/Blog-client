@@ -15,7 +15,7 @@ const Auth = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/auth/${isRegister ? "register" : "login"}`,
+        `http://192.168.1.103:5000/api/auth/${isRegister ? "register" : "login"}`,
         {
           username: username.value,
           email: isRegister ? email.value : "",

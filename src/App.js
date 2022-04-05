@@ -49,7 +49,7 @@ function App() {
             exact
             path="/admin/about"
             element={
-              (window.sessionStorage.getItem("role") === "1" && (
+              (window.sessionStorage?.getItem("role") === "1" && (
                 <Layout>
                   <AdminAbout />
                 </Layout>

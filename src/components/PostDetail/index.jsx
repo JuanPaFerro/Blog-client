@@ -23,7 +23,7 @@ const PostDetail = () => {
   const { id } = useParams();
   const { post } = useGetOnePostById(id);
   const { isAuth } = useContext(Context);
-  const publicFiles = "http://localhost:5000/images/";
+  const publicFiles = "http://192.168.1.103:5000/images/";
 
   return (
     <Container>

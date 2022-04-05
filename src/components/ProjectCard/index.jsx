@@ -11,11 +11,10 @@ import {
 import { Context } from "../../Context";
 import { BsPencil } from "react-icons/bs";
 import DefaultImage from "../../assets/project.png";
-import axios from "axios";
 
 const ProjectCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
   const { isAuth } = useContext(Context);
-  const publicFiles = "http://localhost:5000/images/";
+  const publicFiles = "http://192.168.1.103:5000/images/";
 
   return (
     <GridItem>

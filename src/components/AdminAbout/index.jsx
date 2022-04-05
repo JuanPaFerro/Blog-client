@@ -29,22 +29,22 @@ export const AdminAbout = () => {
   const { about } = useAboutInfo();
   const navigate = useNavigate();
   const { _id, image, description, skills, phone, email, linkedin, github } =
-  about;
-  const publicFiles = "http://localhost:5000/images/";
-  
+    about;
+  const publicFiles = "http://192.168.1.103:5000/images/";
+
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      image,
-      description,
-      skills,
-      phone,
-      email,
-      linkedin,
-      github,
+      image: image || "",
+      description: description || "",
+      skills: skills || "",
+      phone: phone || "",
+      email: email || "",
+      linkedin: linkedin || "",
+      github: github || "",
     },
     onSubmit: async (values) => {
-      await axios.put(`http://localhost:5000/api/about/${_id}`, values);
+      await axios.put(`http://192.168.1.103:5000/api/about/${_id}`, values);
       navigate(`/`);
     },
   });
@@ -56,7 +56,7 @@ export const AdminAbout = () => {
     data.append("file", fileInput);
 
     try {
-      await axios.post("http://localhost:5000/api/upload", data);
+      await axios.post("http://192.168.1.103:5000/api/upload", data);
       formik.setFieldValue("image", filename);
     } catch (error) {
       console.log(error);
@@ -113,7 +113,9 @@ export const AdminAbout = () => {
       <Form onSubmit={formik.handleSubmit}>
         <ImageContainer>
           <Subtitle>Photo</Subtitle>
-          <Image src={publicFiles + formik.values.image} />
+          <Image
+            src={formik.values.image && publicFiles + formik.values.image}
+          />
 
           <Input type="file" onChange={(e) => handleFile(e.target.files[0])} />
         </ImageContainer>
