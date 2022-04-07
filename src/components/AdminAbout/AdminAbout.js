@@ -9,6 +9,11 @@ export const GeneralContainer = styled.div`
 export const Form = styled.form`
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
@@ -53,6 +58,11 @@ export const ContactContainer = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+
+    @media (max-width: 900px) {
+      display: grid ;
+      grid-template-columns: 1fr 1fr ;
+    }
   }
 `;
 export const ContactItem = styled.div`
