@@ -14,7 +14,7 @@ import DefaultImage from "../../assets/project.png";
 
 const ProjectCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
   const { isAuth } = useContext(Context);
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <GridItem>

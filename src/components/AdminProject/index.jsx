@@ -25,7 +25,7 @@ const AdminProject = () => {
   const navigate = useNavigate();
   const { project } = useGetOneProjectById(id);
   const { title, image, content, link } = project;
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -37,16 +37,16 @@ const AdminProject = () => {
     },
     onSubmit: async (values) => {
       if (id === "new") {
-        await axios.post(`http://192.168.1.103:5000/api/projects/`, values);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/projects/`, values);
       } else {
-        await axios.put(`http://192.168.1.103:5000/api/projects/${id}`, values);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/projects/${id}`, values);
       }
       navigate("/");
     },
   });
 
   const handleDelete = () => {
-    axios.delete(`http://192.168.1.103:5000/api/projects/${id}`);
+    axios.delete(`${process.env.REACT_APP_API_URL}/api/projects/${id}`);
     navigate("/");
   };
 
@@ -57,7 +57,7 @@ const AdminProject = () => {
     data.append("file", fileInput);
 
     try {
-      await axios.post("http://192.168.1.103:5000/api/upload", data);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
       formik.setFieldValue("image", filename);
     } catch (error) {
       console.log(error);

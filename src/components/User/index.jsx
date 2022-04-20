@@ -20,7 +20,7 @@ const User = () => {
   const image = window.sessionStorage.getItem("image");
   const email = window.sessionStorage.getItem("email");
   const role = window.sessionStorage.getItem("role");
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <Container>

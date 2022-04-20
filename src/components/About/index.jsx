@@ -32,7 +32,7 @@ import MDEditor from "@uiw/react-md-editor";
 const About = () => {
   const { about, loading } = useAboutInfo();
   const { image, description, skills, phone, email, linkedin, github } = about;
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles =` ${process.env.REACT_APP_API_URL}/images/`;
   const { isAuth } = useContext(Context);
 
   return (

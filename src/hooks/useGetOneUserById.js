@@ -8,7 +8,7 @@ const useGetOneUserById = (id) => {
   useEffect(() => {
     setLoading(true);
     const fetchPost = async () => {
-      const res = await axios.get(`http://192.168.1.103:5000/api/users/${id}`);
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/users/${id}`);
       setUser(res.data);
       setLoading(false);
     };

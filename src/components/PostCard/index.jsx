@@ -11,7 +11,7 @@ import DefaultImage from "../../assets/post.jpg";
 
 
 const PostCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <GridItemLink to={`/post/${cardId}`} style={{ textDecoration: "none" }}>

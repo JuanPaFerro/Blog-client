@@ -8,7 +8,7 @@ export function useAboutInfo() {
   useEffect(() => {
     setLoading(true);
     const fetchAbout = async () => {
-      const res = await axios.get("http://192.168.1.103:5000/api/about");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/about`);
       setAbout(res.data[0]);
       setLoading(false);
     };

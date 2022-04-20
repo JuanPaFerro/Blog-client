@@ -14,7 +14,7 @@ import { useGetAllPosts } from "../../hooks/useGetAllPosts";
 
 const PostBanner = () => {
   const { firstPost } = useGetAllPosts();
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <Container>

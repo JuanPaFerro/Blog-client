@@ -28,7 +28,7 @@ const AdminPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { post } = useGetOnePostById(id);
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -42,16 +42,16 @@ const AdminPost = () => {
     },
     onSubmit: async ({ username, profilePic, ...values }) => {
       if (id === "new") {
-        await axios.post(`http://192.168.1.103:5000/api/posts/`, values);
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/posts/`, values);
       } else {
-        await axios.put(`http://192.168.1.103:5000/api/posts/${id}`, values);
+        await axios.put(`${process.env.REACT_APP_API_URL}/api/posts/${id}`, values);
       }
       navigate("/blog");
     },
   });
 
   const handleDelete = async () => {
-    await axios.delete(`http://192.168.1.103:5000/api/posts/${id}`);
+    await axios.delete(`${process.env.REACT_APP_API_URL}/api/posts/${id}`);
     navigate("/blog");
   };
 
@@ -62,7 +62,7 @@ const AdminPost = () => {
     data.append("file", fileInput);
 
     try {
-      await axios.post("http://192.168.1.103:5000/api/upload", data);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
       formik.setFieldValue("photo", filename);
     } catch (error) {
       console.log(error);

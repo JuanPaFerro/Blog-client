@@ -30,7 +30,7 @@ export const AdminAbout = () => {
   const navigate = useNavigate();
   const { _id, image, description, skills, phone, email, linkedin, github } =
     about;
-  const publicFiles = "http://192.168.1.103:5000/images/";
+  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -44,7 +44,7 @@ export const AdminAbout = () => {
       github: github || "",
     },
     onSubmit: async (values) => {
-      await axios.put(`http://192.168.1.103:5000/api/about/${_id}`, values);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/about/${_id}`, values);
       navigate(`/`);
     },
   });
@@ -56,7 +56,7 @@ export const AdminAbout = () => {
     data.append("file", fileInput);
 
     try {
-      await axios.post("http://192.168.1.103:5000/api/upload", data);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
       formik.setFieldValue("image", filename);
     } catch (error) {
       console.log(error);

@@ -8,7 +8,7 @@ export const useGetAllProjects = () => {
   useEffect(() => {
     setLoading(true);
     const fetchProjects = async () => {
-      const res = await axios.get("http://192.168.1.103:5000/api/projects");
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects`);
       setProjects(res.data);
       setLoading(false);
     };
