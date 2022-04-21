@@ -13,9 +13,8 @@ export const HeroContainer = styled.div`
     position: absolute;
     background-image: url(${img});
     filter: blur(4px);
-    z-index: 1;
   }
-`;
+`; 
 
 export const HeroContent = styled.div`
   z-index: 10;
@@ -64,8 +63,8 @@ export const ArrowElement = styled.span`
   display: block;
   width: 20px;
   height: 20px;
-  border-bottom: 3px solid #EFF3F5;
-  border-right: 3px solid #EFF3F5;
+  border-bottom: 3px solid #eff3f5;
+  border-right: 3px solid #eff3f5;
   transform: rotate(45deg);
   margin: -10px;
   animation: ${arrowAnimation} 2s infinite;

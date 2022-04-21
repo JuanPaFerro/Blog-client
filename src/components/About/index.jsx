@@ -31,7 +31,6 @@ import MDEditor from "@uiw/react-md-editor";
 
 const About = () => {
   const { about, loading } = useAboutInfo();
-  const { image, description, skills, phone, email, linkedin, github } = about;
   const publicFiles =` ${process.env.REACT_APP_API_URL}/images/`;
   const { isAuth } = useContext(Context);
 
@@ -47,11 +46,11 @@ const About = () => {
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={image ? publicFiles + image : UserPlaceholderImage} />
+          <Photo src={about.image ? publicFiles + about.image : UserPlaceholderImage} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
         <div>
-          {loading ? "loading" : <MDEditor.Markdown source={description} />}
+          {loading ? "loading" : <MDEditor.Markdown source={about.description} />}
         </div>
       </BioContainer>
       <DarkerSection>
@@ -65,8 +64,8 @@ const About = () => {
         </Quote>
         {loading
           ? "loading"
-          : skills &&
-            Object.entries(skills[0]).map((category) => (
+          : about.skills &&
+            Object.entries(about.skills[0]).map((category) => (
               <Skills key={category[0]}>
                 <strong>{category[0]}</strong>
                 <SkillCategory>
@@ -102,22 +101,22 @@ const About = () => {
           <SocialLink>
             <BsPhone />
             <br />
-            <span>{loading ? "loading" : phone}</span>
+            <span>{loading ? "loading" : about.phone}</span>
           </SocialLink>
           <SocialLink>
             <BsEnvelope />
             <br />
-            <span>{loading ? "loading" : email}</span>
+            <span>{loading ? "loading" : about.email}</span>
           </SocialLink>
-          <SocialLink href={loading ? "" : linkedin}>
+          <SocialLink href={loading ? "" : about.linkedin}>
             <BsLinkedin />
             <br />
-            <span>{loading ? "loading" : linkedin}</span>
+            <span>{loading ? "loading" : about.linkedin}</span>
           </SocialLink>
-          <SocialLink href={loading ? "" : github}>
+          <SocialLink href={loading ? "" : about.github}>
             <BsGithub />
             <br />
-            <span>{loading ? "loading" : github}</span>
+            <span>{loading ? "loading" : about.github}</span>
           </SocialLink>
         </SocialLinksContainer>
       </DarkerSection>
