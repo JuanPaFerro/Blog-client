@@ -29,6 +29,7 @@ export const Photo = styled.img`
 export const ImageFooter = styled.h3`
   letter-spacing: 1px;
   margin: 0px;
+  margin-bottom: 1rem ;
   padding: 0px;
   font-size: 13px;
   color: ${({ theme }) => theme.title};
@@ -105,11 +106,12 @@ export const SocialLink = styled.a`
   margin: 3rem 0;
   transition: 0.2s ease-in-out;
   span {
-    font-size: 20px;
+    font-size: 1rem;
   }
   &:hover {
     color: ${({ theme }) => theme.main};
   }
+
 `;
 
 export const EditAboutLink = styled(Link)`

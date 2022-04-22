@@ -6,7 +6,7 @@ import Layout from "../Layout";
 const Home = () => {
   return (
     <>
-      {/* <Home/> */}
+      <Hero/> 
       <Layout>
         <About />
       </Layout>
