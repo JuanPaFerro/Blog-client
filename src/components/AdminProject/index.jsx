@@ -25,7 +25,6 @@ const AdminProject = () => {
   const navigate = useNavigate();
   const { project } = useGetOneProjectById(id);
   const { title, image, content, link } = project;
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -50,20 +49,6 @@ const AdminProject = () => {
     navigate("/");
   };
 
-  const handleFile = async (fileInput) => {
-    const data = new FormData();
-    const filename = Date.now() + fileInput.name;
-    data.append("name", filename);
-    data.append("file", fileInput);
-
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
-      formik.setFieldValue("image", filename);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <Container>
       <Title>Edit Project {`"${formik.values.title}"`}</Title>
@@ -73,11 +58,11 @@ const AdminProject = () => {
           <Image
             src={
               formik.values.image
-                ? publicFiles + formik.values.image
+                ? formik.values.image
                 : DefaultImage
             }
           />
-          <Input type="file" onChange={(e) => handleFile(e.target.files[0])} />
+          <Input type="text" value={formik.values.image} onChange={formik.handleChange("image")} />
         </ImageContainer>
 
         <MDContainer>

@@ -30,7 +30,6 @@ export const AdminAbout = () => {
   const navigate = useNavigate();
   const { _id, image, description, skills, phone, email, linkedin, github } =
     about;
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -44,24 +43,13 @@ export const AdminAbout = () => {
       github: github || "",
     },
     onSubmit: async (values) => {
-      await axios.put(`${process.env.REACT_APP_API_URL}/api/about/${_id}`, values);
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/about/${_id}`,
+        values
+      );
       navigate(`/`);
     },
   });
-
-  const handleFile = async (fileInput) => {
-    const data = new FormData();
-    const filename = Date.now() + fileInput.name;
-    data.append("name", filename);
-    data.append("file", fileInput);
-
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
-      formik.setFieldValue("image", filename);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleSkillChange = (event, category, index, type) => {
     const newSkills = formik.values.skills;
@@ -113,11 +101,8 @@ export const AdminAbout = () => {
       <Form onSubmit={formik.handleSubmit}>
         <ImageContainer>
           <Subtitle>Photo</Subtitle>
-          <Image
-            src={formik.values.image && publicFiles + formik.values.image}
-          />
-
-          <Input type="file" onChange={(e) => handleFile(e.target.files[0])} />
+          <Image src={formik.values.image && formik.values.image} />
+          <Input type="text" value={formik.values.image} onChange={formik.handleChange("image")} />
         </ImageContainer>
         <MDEditorContainer>
           <Subtitle>Description</Subtitle>

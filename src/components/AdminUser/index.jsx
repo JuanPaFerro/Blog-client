@@ -22,7 +22,6 @@ const AdminUser = () => {
   const { user } = useGetOneUserById(id);
   const navigate = useNavigate();
   const { username, email, profilePic } = user;
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -33,25 +32,14 @@ const AdminUser = () => {
       profilePic,
     },
     onSubmit: async (values) => {
-      await axios.put(`${process.env.REACT_APP_API_URL}/api/users/${id}`, values);
+      await axios.put(
+        `${process.env.REACT_APP_API_URL}/api/users/${id}`,
+        values
+      );
 
       navigate("/user");
     },
   });
-
-  const handleFile = async (fileInput) => {
-    const data = new FormData();
-    const filename = Date.now() + fileInput.name;
-    data.append("name", filename);
-    data.append("file", fileInput);
-
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
-      formik.setFieldValue("profilePic", filename);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <Container>
@@ -62,11 +50,15 @@ const AdminUser = () => {
           <Image
             src={
               formik.values.profilePic
-                ? publicFiles + formik.values.profilePic
+                ? formik.values.profilePic
                 : UserPlaceholderImage
             }
           />
-          <Input type="file" onChange={(e) => handleFile(e.target.files[0])} />
+          <Input
+            type="text"
+            value={formik.values.profilePic}
+            onChange={formik.handleChange("profilePic")}
+          />
         </ImageContainer>
         <DataContainer>
           <Subtitle>Username:</Subtitle>

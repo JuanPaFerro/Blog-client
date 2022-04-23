@@ -28,7 +28,6 @@ const AdminPost = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { post } = useGetOnePostById(id);
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   const formik = useFormik({
     enableReinitialize: true,
@@ -55,20 +54,6 @@ const AdminPost = () => {
     navigate("/blog");
   };
 
-  const handleFile = async (fileInput) => {
-    const data = new FormData();
-    const filename = Date.now() + fileInput.name;
-    data.append("name", filename);
-    data.append("file", fileInput);
-
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/upload`, data);
-      formik.setFieldValue("photo", filename);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <GeneralContainer>
       <Title>
@@ -78,7 +63,7 @@ const AdminPost = () => {
         <Banner
           background={
             formik.values.photo
-              ? publicFiles + formik.values.photo
+              ? formik.values.photo
               : DefaultImage
           }
         >
@@ -89,7 +74,7 @@ const AdminPost = () => {
               <UserImage
                 src={
                   formik.values.profilePic
-                    ? publicFiles + formik.values.profilePic
+                    ? formik.values.profilePic
                     : DefaultAuthorImage
                 }
               />
@@ -108,8 +93,9 @@ const AdminPost = () => {
           />
           <Subtitle>Upload Image</Subtitle>
           <PostInput
-            type="file"
-            onChange={(e) => handleFile(e.target.files[0])}
+            type="text"
+            value={formik.values.photo}
+            onChange={formik.handleChange("photo")}
           />
         </PostTitleContainer>
         <MDContainer>

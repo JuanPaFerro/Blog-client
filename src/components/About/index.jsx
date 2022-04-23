@@ -31,7 +31,6 @@ import MDEditor from "@uiw/react-md-editor";
 
 const About = () => {
   const { about, loading } = useAboutInfo();
-  const publicFiles =` ${process.env.REACT_APP_API_URL}/images/`;
   const { isAuth } = useContext(Context);
 
   return (
@@ -46,7 +45,7 @@ const About = () => {
       <Separator />
       <BioContainer>
         <div>
-          <Photo src={about.image ? publicFiles + about.image : UserPlaceholderImage} />
+          <Photo src={about.image ? about.image : UserPlaceholderImage} />
           <ImageFooter>JUAN PABLO FERRO</ImageFooter>
         </div>
         <div>

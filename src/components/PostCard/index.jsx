@@ -9,18 +9,14 @@ import {
 } from "../StandardCard/StandardCard";
 import DefaultImage from "../../assets/post.jpg";
 
-
 const PostCard = ({ cardId, cardImage, cardTitle = "", cardText = "" }) => {
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
-
   return (
     <GridItemLink to={`/post/${cardId}`} style={{ textDecoration: "none" }}>
       <Card >
-        <Img src={cardImage ? publicFiles+cardImage : DefaultImage} />
+        <Img src={cardImage ? cardImage : DefaultImage} />
         <CardContent>
           <CardHeader>{cardTitle}</CardHeader>
-          <CardText>{cardText}</CardText>
-          
+          <CardText>{cardText}</CardText>          
         </CardContent>
       </Card>
     </GridItemLink>

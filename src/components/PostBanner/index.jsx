@@ -14,14 +14,13 @@ import { useGetAllPosts } from "../../hooks/useGetAllPosts";
 
 const PostBanner = () => {
   const { firstPost } = useGetAllPosts();
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <Container>
       <Banner
         to={`/post/${firstPost._id}`}
         background={
-          firstPost.photo ? publicFiles + firstPost.photo : DefaultPostImage
+          firstPost.photo ? firstPost.photo : DefaultPostImage
         }
       >
         <BannerInfoContainer>
@@ -29,7 +28,7 @@ const PostBanner = () => {
           {firstPost.user ? (
             <PostAuthorContainer>
               <UserImage
-                src={firstPost.user[0].profilePic && publicFiles + firstPost.user[0].profilePic || DefaultAuthorImage}
+                src={firstPost.user[0].profilePic && firstPost.user[0].profilePic || DefaultAuthorImage}
               />
               <UserName>{firstPost.user[0].username}</UserName>
             </PostAuthorContainer>

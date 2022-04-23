@@ -23,16 +23,12 @@ const PostDetail = () => {
   const { id } = useParams();
   const { post } = useGetOnePostById(id);
   const { isAuth } = useContext(Context);
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <Container>
       <ImageContainer>
         <Image
-          src={
-            post[0] &&
-            (post[0].photo ? publicFiles + post[0].photo : PlaceholderImage)
-          }
+          src={post[0] && (post[0].photo ? post[0].photo : PlaceholderImage)}
         />
       </ImageContainer>
       <TitleContainer>
@@ -41,7 +37,7 @@ const PostDetail = () => {
           <AuthorName>{post[0] && post[0].user[0].username}</AuthorName>
           <AuthorImage
             src={
-              (post[0] && publicFiles + post[0].user[0].profilePic) || UserPlaceholderImage
+              (post[0] && post[0].user[0].profilePic) || UserPlaceholderImage
             }
           />
           {isAuth && window.sessionStorage.getItem("role") === "1" && (

@@ -20,12 +20,11 @@ const User = () => {
   const image = window.sessionStorage.getItem("image");
   const email = window.sessionStorage.getItem("email");
   const role = window.sessionStorage.getItem("role");
-  const publicFiles = `${process.env.REACT_APP_API_URL}/images/`;
 
   return (
     <Container>
       <ProfilePicContainer>
-        <ProfilePic src={image ? publicFiles + image : UserImagePlaceholder} />
+        <ProfilePic src={image ? image : UserImagePlaceholder} />
       </ProfilePicContainer>
       <InfoContainer>
         <InfoText>Username: {username}</InfoText>
