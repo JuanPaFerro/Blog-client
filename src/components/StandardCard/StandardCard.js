@@ -74,9 +74,6 @@ export const CardText = styled.p`
 `;
 
 export const CardBtn = styled(Link)`
-  position: absolute;
-  top: 0;
-  right: 0;
   display: block;
   width: fit-content;
   text-decoration: none;

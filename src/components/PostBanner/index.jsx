@@ -15,20 +15,26 @@ import { useGetAllPosts } from "../../hooks/useGetAllPosts";
 const PostBanner = () => {
   const { firstPost } = useGetAllPosts();
 
+  if (!firstPost) {
+    return <PostTitle>There's no posts to show</PostTitle>;
+  }
+
   return (
     <Container>
       <Banner
         to={`/post/${firstPost._id}`}
-        background={
-          firstPost.photo ? firstPost.photo : DefaultPostImage
-        }
+        background={firstPost.photo ? firstPost.photo : DefaultPostImage}
       >
         <BannerInfoContainer>
           <PostTitle>{firstPost.title}</PostTitle>
           {firstPost.user ? (
             <PostAuthorContainer>
               <UserImage
-                src={firstPost.user[0].profilePic && firstPost.user[0].profilePic || DefaultAuthorImage}
+                src={
+                  (firstPost.user[0].profilePic &&
+                    firstPost.user[0].profilePic) ||
+                  DefaultAuthorImage
+                }
               />
               <UserName>{firstPost.user[0].username}</UserName>
             </PostAuthorContainer>
